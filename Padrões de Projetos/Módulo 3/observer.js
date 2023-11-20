@@ -16,7 +16,7 @@ class TextEditor extends Editor {
     removeLinha(linhaPosicao) {
         this.corpodotexto.splice(linhaPosicao,1);
     }
-    imprimeTexto(textoCompleto: string){   
+    imprimeTexto(textoCompleto){   
             var imptexto = "TEXTO\n";
             imptexto += "--------------------------------------------------------------------\n";
             imptexto +=  this.corpodotexto.join("\n")+"\n"; 
