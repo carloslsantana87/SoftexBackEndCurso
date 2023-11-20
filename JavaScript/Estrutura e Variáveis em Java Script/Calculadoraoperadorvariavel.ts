@@ -1,6 +1,6 @@
 const prompt = require('prompt-sync')();
-var s:symbol = Symbol();
-var num1:number, num2:number, result:number, restante:number;
+var s: symbol = Symbol();
+var num1: number, num2: number, result: number, restante: number;
 
 console.log("BEM-VINVO A CALCULADORA!");
 console.log("DIGITE OS NÚMEROS E ESCOLHA O OPERADOR PARA REALIZAR O CÁLCULO!")
@@ -13,7 +13,7 @@ console.log("ESCOLHA O OPERADOR PARA REALIZAR O CALCULO!");
 s = prompt("Digite o operador: + para SOMA, - para Subtração, * para Multiplicação, / para Divisão:");
 
 if (s === "/") {
- 
+
 
     if (eval(num1 % num2) == 0) {
 
@@ -21,8 +21,8 @@ if (s === "/") {
         console.log(`O resultado da operação é: ${result}, sem resto`);
 
     } else {
-         
-        result = eval(num1 +  s + num2);
+
+        result = eval(num1 + s + num2);
         restante = (eval(num1 + s + num2)) % num2;
         console.log(`O resultado da divisão é: ${result.toFixed(2)}`);
         console.log(`O resto da divisão é: ${restante.toFixed(2)}`);
@@ -31,6 +31,6 @@ if (s === "/") {
 
 } else {
 
-    result = eval(num1 +  s + num2);
+    result = eval(num1 + s + num2);
     console.log(`O resultado da operação é: ${result}`);
 }
