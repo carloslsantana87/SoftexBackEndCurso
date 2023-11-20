@@ -17,14 +17,14 @@ class TextEditor extends Editor {
         this.corpodotexto.push(`${this.numerodelinha++}   ${this.texto = texto}`);
     }
     removeLinha(linhaPosicao: number): void {
-        this.corpodotexto.splice(linhaPosicao,1);
+        this.corpodotexto.splice(linhaPosicao, 1);
     }
-    imprimeTexto(textoCompleto: string){   
-            var imptexto = "TEXTO\n";
-            imptexto += "--------------------------------------------------------------------\n";
-            imptexto +=  this.corpodotexto.join("\n")+"\n"; 
-            imptexto += "--------------------------------------------------------------------\n";
-            return imptexto; 
+    imprimeTexto(textoCompleto: string) {
+        var imptexto = "TEXTO\n";
+        imptexto += "--------------------------------------------------------------------\n";
+        imptexto += this.corpodotexto.join("\n") + "\n";
+        imptexto += "--------------------------------------------------------------------\n";
+        return imptexto;
     }
 }
 
