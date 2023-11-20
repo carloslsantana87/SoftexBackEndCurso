@@ -1,4 +1,7 @@
 class FrangoAssado{
+    precoSanduichedeFrango: number;
+    valordoAdicional:number;
+    itemadicional: string;
     constructor(){      
         this.precoSanduichedeFrango = 4.50;
         this.valordoAdicional = 0;       
@@ -11,11 +14,13 @@ class FrangoAssado{
     }  
 };
 class Pepperoni{
+    AdicionalPepperoni: number;
     constructor (){
         this.AdicionalPepperoni = 0.99;
     }
 };
 class QueijoMussarelaRalado{
+    AdicionalQueijoRalado:number;
     constructor(){
         this.AdicionalQueijoRalado = 2.00;
     }
