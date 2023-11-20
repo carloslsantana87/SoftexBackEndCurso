@@ -1,22 +1,19 @@
 class Editor {
-    texto: string;
-    constructor(texto: string) {
+    constructor(texto) {
         this.texto = texto;
     }
 }
 class TextEditor extends Editor {
-    texto: string;
-    numerodelinha: number;
-    constructor(texto: string) {
+  
+    constructor(texto) {
         super(texto);
-        //this.texto = texto;
         this.numerodelinha = 1;
         this.corpodotexto = [];
     }
-    inserirLinha(texto: string): void {
+    inserirLinha(texto) {
         this.corpodotexto.push(`${this.numerodelinha++}   ${this.texto = texto}`);
     }
-    removeLinha(linhaPosicao: number): void {
+    removeLinha(linhaPosicao) {
         this.corpodotexto.splice(linhaPosicao,1);
     }
     imprimeTexto(textoCompleto: string){   
