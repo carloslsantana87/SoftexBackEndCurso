@@ -1,43 +1,105 @@
 const prompt = require('prompt-sync')();
 
-class Computador{
-    constructor(ram, hdd, cpu, type,precocomputador){
-        this.ram = ram + " " + "GB";
-        this.hdd = "SSD" + " " + hdd + " " + "GB";
-        this.cpu = cpu + " " + "GHZ";
-        this.type = type;
-        this.precocomputador = "R$" + " " +precocomputador;
+class Automovel {
+    constructor(marca, modelo, ano) {
+        this.marca = "FIAT";
+        this.modelo = "CHRONOS";
+        this.ano = 2024;             
     }
-    dadosComputador() {
-        return `\tMemória: ${this.ram} | HARD DISK: ${this.hdd}  | CPU: ${this.cpu} | PREÇO: ${this.precocomputador} \n`;
+    cloneObjDuas(){        
+        return `\tMARCA: ${this.marca} |  MODELO: ${this.modelo } | ANO: ${this.ano} | TIP TRILHO: ${this.tipotrilhobanco}  \n`;      
     }
-    imprimirNotacomputador() {
-        var notacomp = "\t\t\tNOTA DE VENDA DO COMPUTADOR\n";
-        notacomp += "\t-----------------------------------------------------------------------------------------\n";
-        notacomp += "\tTipo do Computador:" + "   " + this.type.toString() + "\n";
-        notacomp += "\t-----------------------------------------------------------------------------------------\n";
-        notacomp += "\tMEMÓRIA\t\tHDD\t\t\tCPU\t\t\tPREÇO\n";
-        notacomp += "\t-----------------------------------------------------------------------------------------\n";
-        notacomp += this.dadosComputador();
-        notacomp += "\t-----------------------------------------------------------------------------------------\n";
-        return notacomp;
+    cloneObjQuatro(){        
+        return `\tMARCA: ${this.marca} |  MODELO: ${this.modelo } | ANO: ${this.ano} | MULTIMIDIA: ${this.multimidia} \n`;          
+    }
+    represent(){
+        if (this.multimidia === undefined){
+            var notacomp = "\tREGISTRO DE FABRICAÇÃO DE VEÍCULO\n";
+            notacomp += "\t--------------------------------------------------------------------\n";
+            notacomp += "\tMARCA\t\t\tMODELO\t\t\tANO\t\t\t\n";
+            notacomp += "\t--------------------------------------------------------------------\n";
+            notacomp += this.cloneObjDuas();
+            notacomp += "\t--------------------------------------------------------------------\n";
+            return notacomp;  
+        } else {
+            var notacomp = "\tREGISTRO DE FABRICAÇÃO DE VEÍCULO\n";
+            notacomp += "\t---------------------------------------------------------------------------\n";
+            notacomp += "\tMARCA\t\t\tMODELO\t\t\tANO\t\t\t\n";
+            notacomp += "\t---------------------------------------------------------------------------\n";
+            notacomp += this.cloneObjQuatro();
+            notacomp += "\t---------------------------------------------------------------------------\n";
+            return notacomp;  
+
+        }  
+ }
+}
+
+class Duasportas extends Automovel{
+    constructor(tipotrilhobanco) {
+        super();
+        this.tipotrilhobanco = tipotrilhobanco;
     }
 }
-class PC extends Computador {
-    constructor(ram, hdd, cpu, type, precocomputador){
-        super(ram, hdd, cpu, type,precocomputador);
-    } 
-}
-class Server extends Computador {
-    constructor(ram, hdd, cpu, type, precocomputador){
-        super(ram, hdd, cpu, type, precocomputador);
+class Quatroportas extends Automovel{
+    constructor(multimidia) {
+        super();
+        this.multimidia = multimidia;
+      
     }
 }
-var tipoComputador = parseInt(prompt("Escolha qual o tipo de computador a ser vendido: 1 - Para PC, 2 - Para servdor:"));
-if (tipoComputador === 1) {
-    var comPracomputador = new PC(16,320,"Core I5 6.7", "PC", 3000);
-   console.log(comPracomputador.imprimirNotacomputador());
-} else {
-    var comPracomputador = new Server(32,640,"Core I9 12.9", "Servidor", 15000);
-  console.log(comPracomputador.imprimirNotacomputador());
+class Aplicacao extends Automovel {
+    constructor () {
+        super();
+        this.carrofabricado = [];
+    }
+    addVeiculo(item){
+       this.carrofabricado.push(item)
+    }     
 }
+
+//Veiculos duas portas
+var carroDuasportas = new Duasportas("fixo");
+var itemdeproducao  = new Aplicacao (carroDuasportas);
+var addItemclonado = carroDuasportas.cloneObjDuas(itemdeproducao);
+
+var carroDuasportasUm = new Duasportas("removivel");
+var itemdeproducao  = new Aplicacao (carroDuasportasUm);
+var addItemclonado = carroDuasportasUm.cloneObjDuas(itemdeproducao);
+
+var carroDuasportasDois = new Duasportas("hibrido");
+var itemdeproducao  = new Aplicacao (carroDuasportasDois);
+var addItemclonado = carroDuasportasDois.cloneObjDuas(itemdeproducao);
+
+
+//Veiculos quatro portas
+var carroQuatroportas = new Quatroportas("Encosto do banco");
+var itemdeproducao  = new Aplicacao (carroQuatroportas);
+var addItemclonado = carroQuatroportas.cloneObjQuatro(itemdeproducao);
+
+var carroQuatroportasUm = new Quatroportas("Pain. e enc. do banco");
+var itemdeproducao  = new Aplicacao (carroQuatroportasUm);
+var addItemclonado = carroQuatroportasUm.cloneObjQuatro(itemdeproducao);
+
+var carroQuatroportasDois = new Quatroportas("Painel");
+var itemdeproducao  = new Aplicacao (carroQuatroportasDois);
+var addItemclonado = carroQuatroportasDois.cloneObjQuatro(itemdeproducao);
+
+itemdeproducao.addVeiculo(carroDuasportas); 
+itemdeproducao.addVeiculo(carroDuasportasUm);
+itemdeproducao.addVeiculo(carroDuasportasDois);  
+
+itemdeproducao.addVeiculo(carroQuatroportas); 
+itemdeproducao.addVeiculo(carroQuatroportasUm); 
+itemdeproducao.addVeiculo(carroQuatroportasDois); 
+
+console.log(carroDuasportas.represent());
+console.log("\n");
+console.log(carroDuasportasUm.represent());
+console.log("\n");
+console.log(carroDuasportasDois.represent());
+
+console.log(carroQuatroportas.represent());
+console.log("\n");
+console.log(carroQuatroportasUm.represent());
+console.log("\n");
+console.log(carroQuatroportasDois.represent());
